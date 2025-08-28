@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Bestie — Kaaysha & Ne 💖</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    
+    <!-- Tone.js for sound effects -->
+    <script src="https://unpkg.com/tone@14.7.58/build/Tone.js"></script>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        peach: '#FEE4E2',
+                        lavender: '#E2EAFB',
+                        'light-blue': '#D9F0F4',
+                        pink: '#FFD3D3',
+                        'soft-pink': '#FFADC3',
+                        'dark-gray': '#333333',
+                        'sky-blue': '#A3C6C4',
+                        mint: '#C2F9BB'
+                    },
+                    fontFamily: {
+                        handwritten: ['Caveat', 'cursive'],
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in-up': 'slide-in-up 0.8s ease-out forwards',
+                        'zoom-in-bounce': 'zoom-in-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both',
+                        'typewriter': 'typewriter 4s steps(44) forwards',
+                        'blink-caret': 'blink-caret 0.75s step-end infinite',
+                        'fade-in': 'fade-in 1.5s ease-in forwards',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'heartbeat': 'heartbeat 1s infinite',
+                        'rainbow-glow': 'rainbow-glow 3s linear infinite',
+                        'glow': 'glow 1.5s ease-in-out infinite alternate',
+                        'spin-3d': 'spin-3d 5s infinite linear',
+                        'reveal': 'reveal 2s ease-out forwards'
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' }
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { transform: 'scale(1)', 'box-shadow': '0 0 0 rgba(255, 173, 195, 0.7)' },
+                            '50%': { transform: 'scale(1.05)', 'box-shadow': '0 0 10px 10px rgba(255, 173, 195, 0.5)' }
+                        },
+                        'slide-in-up': {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'zoom-in-bounce': {
+                            '0%': { transform: 'scale(0.5)', opacity: '0' },
+                            '50%': { transform: 'scale(1.1)' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        'typewriter': {
+                            from: { width: '0' },
+                            to: { width: '100%' }
+                        },
+                        'blink-caret': {
+                            'from, to': { 'border-color': 'transparent' },
+                            '50%': { 'border-color': 'black' }
+                        },
+                        'fade-in': { from: { opacity: '0' }, to: { opacity: '1' } },
+                        'wiggle': {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' }
+                        },
+                        'heartbeat': {
+                            '0%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.3)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.3)' },
+                            '70%': { transform: 'scale(1)' }
+                        },
+                        'rainbow-glow': {
+                            '0%, 100%': { filter: 'hue-rotate(0deg)', 'box-shadow': '0 0 10px 5px rgba(255, 0, 0, 0.7)' },
+                            '25%': { filter: 'hue-rotate(90deg)', 'box-shadow': '0 0 10px 5px rgba(255, 255, 0, 0.7)' },
+                            '50%': { filter: 'hue-rotate(180deg)', 'box-shadow': '0 0 10px 5px rgba(0, 255, 0, 0.7)' },
+                            '75%': { filter: 'hue-rotate(270deg)', 'box-shadow': '0 0 10px 5px rgba(0, 0, 255, 0.7)' }
+                        },
+                        'glow': {
+                            '0%, 100%': { 'text-shadow': '0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 20px #ff69b4' },
+                            '50%': { 'text-shadow': '0 0 10px #ffc0cb, 0 0 20px #ffc0cb, 0 0 30px #ffc0cb' }
+                        },
+                        'spin-3d': {
+                            '0%': { transform: 'rotateX(0deg) rotateY(0deg) scale(1)' },
+                            '100%': { transform: 'rotateX(360deg) rotateY(360deg) scale(1.1)' }
+                        },
+                        'reveal': {
+                            '0%': { opacity: '0', transform: 'scale(0.8) translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'scale(1) translateY(0)' }
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        /* General page styles */
+        body { font-family: 'Inter', sans-serif; background-color: #fffaf9; color: #333; transition: background-color 1s ease-in-out; }
+        .section-padding { padding: 4rem 1rem; }
+
+        /* Mouse trail heart effect */
+        .mouse-heart {
+            position: fixed;
+            z-index: 1000;
+            font-size: 1.5rem;
+            pointer-events: none;
+            user-select: none;
+            animation: fadeOut 1s forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); display: flex;
+            justify-content: center; align-items: center; z-index: 50;
+            opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            position: relative; background: white; padding: 1.5rem; border-radius: 1rem;
+            max-width: 90%; max-height: 90%; overflow: auto;
+            transform: scale(0.95); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .close-button { position: absolute; top: 0.5rem; right: 0.75rem; font-size: 1.5rem; color: #fff; cursor: pointer; text-shadow: 0 0 5px black; }
+
+        /* Floating hearts effect */
+        .floating-heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 2rem;
+            opacity: 0;
+            animation: heart-float 5s ease-out forwards;
+            pointer-events: none;
+            z-index: 30;
+        }
+        @keyframes heart-float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(30deg); opacity: 0; }
+        }
+
+        /* Fireworks container */
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 45;
+        }
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 10px #fff;
+            animation: explode 1.5s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(20); opacity: 0.5; }
+            100% { transform: scale(30); opacity: 0; }
+        }
+
+        /* GIF sticker styles */
+        .sticker-gif {
+            position: absolute;
+            z-index: 20;
+            pointer-events: none;
+        }
+        .sticker-gif.bouncing {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body class="bg-peach font-sans overflow-x-hidden">
+
+    <!-- Floating Emojis -->
+    <div id="emoji-container" class="fixed inset-0 pointer-events-none overflow-hidden z-20"></div>
+
+    <!-- Heart Rain Container -->
+    <div id="heart-rain-container" class="fixed inset-0 pointer-events-none overflow-hidden z-30"></div>
+
+    <!-- Fireworks Container -->
+    <div id="fireworks-container" class="fixed inset-0 pointer-events-none overflow-hidden z-40"></div>
+
+    <!-- Mouse trail container -->
+    <div id="mouse-trail-container" class="fixed inset-0 pointer-events-none z-50"></div>
+
+    <!-- Music Toggle and Surprise Button (Fixed) -->
+    <div class="fixed bottom-5 right-5 z-50 flex gap-3">
+        <button id="music-toggle" class="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform"><i class="fas fa-music text-dark-gray"></i></button>
+        <button id="surprise-btn" class="bg-white px-4 py-2 rounded-full shadow-lg font-bold hover:scale-105 transition-transform animate-pulse-glow">
+            Tap for a Surprise!
+        </button>
+    </div>
+    <audio id="background-music" loop>
+        <!-- REPLACE THIS URL WITH YOUR MP3 MUSIC URL -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="relative z-10">
+        <!-- Section to reveal after password unlock -->
+        <section id="hidden-section" class="section-padding bg-pink text-center hidden">
+            <h2 class="text-4xl font-bold font-handwritten text-dark-gray animate-rainbow-glow">Forever Besties 💕</h2>
+            <p class="mt-4 text-xl">You've found the secret page! Here are some extra memories just for you.</p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 bg-white rounded-lg shadow-md animate-slide-in-up">
+                    <!-- REPLACE THIS IMAGE URL WITH YOUR OWN PHOTO -->
+                    <img src="https://placehold.co/400x400/FFADC3/FFFFFF?text=Hidden+Photo+1" alt="Hidden Photo 1" class="w-full rounded-lg mb-4">
+                    <p class="font-handwritten text-lg">Remember that silly face we made?</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md animate-slide-in-up" style="animation-delay: 0.2s">
+                    <!-- REPLACE THIS IMAGE URL WITH YOUR OWN PHOTO -->
+                    <img src="https://placehold.co/400x400/D9F0F4/FFFFFF?text=Hidden+Photo+2" alt="Hidden Photo 2" class="w-full rounded-lg mb-4">
+                    <p class="font-handwritten text-lg">Our favorite spot for gossip!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Time Capsule Modal -->
+        <div id="time-capsule-modal" class="modal-overlay">
+            <div class="modal-content text-center p-8">
+                <span class="close-button text-gray-800">&times;</span>
+                <h3 class="text-4xl md:text-5xl font-bold mb-4 font-handwritten">A Message for the Future...</h3>
+                <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+                    To my two favorite people, Kaaysha and Ne. This is a message from me, Manav, to be opened in the future. I hope our bond is even stronger and our memories are even more cherished. I'm so grateful for your friendship and for all the joy you bring into my life. No matter where life takes us, I know we'll always be there for each other. Thank you for being my anchor and my constant source of laughter. I look forward to making a million more memories with you. Love you always, Manav.
+                </p>
+                <div class="mt-8">
+                    <button id="capsule-reveal-btn" class="px-6 py-3 bg-pink text-white rounded-full font-bold hover:scale-105 transition-transform animate-heartbeat">
+                        Reveal a Secret!
+                    </button>
+                    <p id="capsule-secret-message" class="mt-4 text-xl font-handwritten text-soft-pink hidden animate-reveal">
+                        P.S. Remember that one time we… let's just say, it was iconic. 😉
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center p-8 bg-pink relative overflow-hidden">
+            <div class="z-10 animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold font-handwritten">To My Besties — <span class="text-soft-pink">Kaaysha & Ne 💖</span></h1>
+                <p class="mt-4 text-xl md:text-2xl">Since 29th August 2024, 3:06 PM — a story to last forever.</p>
+                <a href="#story" class="inline-block mt-8 bg-white px-6 py-3 rounded-full shadow-lg font-bold hover:scale-105 transition-transform animate-pulse-glow">Enter Our World ✨</a>
+            </div>
+        </section>
+
+        <!-- Our Story Timeline -->
+        <section id="story" class="section-padding bg-lavender">
+            <h2 class="text-3xl text-center font-bold mb-8">Our Story ✨</h2>
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-light-blue -translate-x-1/2"></div>
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item-container flex items-center justify-between my-8">
+                    <div class="w-1/2 pr-6 text-right opacity-0 timeline-item">
+                        <h3 class="font-bold">The Day We Met</h3>
+                        <p class="text-sm">29 Aug 2024</p>
+                        <p class="mt-2">That first hello that changed everything and started this journey.</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-light-blue flex items-center justify-center text-white opacity-0 timeline-item"><i class="fas fa-handshake"></i></div>
+                    <div class="w-1/2"></div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item-container flex items-center justify-between my-8 flex-row-reverse">
+                    <div class="w-1/2 pl-6 opacity-0 timeline-item">
+                        <h3 class="font-bold">Bus Ride Laughs</h3>
+                        <p class="text-sm">Late 2024</p>
+                        <p class="mt-2">Our bus rides are our little stage for jokes, gossip, and pure happiness.</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-pink flex items-center justify-center text-white opacity-0 timeline-item"><i class="fas fa-bus"></i></div>
+                    <div class="w-1/2"></div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item-container flex items-center justify-between my-8">
+                    <div class="w-1/2 pr-6 text-right opacity-0 timeline-item">
+                        <h3 class="font-bold">The First Trip</h3>
+                        <p class="text-sm">Early 2025</p>
+                        <p class="mt-2">Exploring new places and making priceless memories together. It was unforgettable!</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-light-blue flex items-center justify-center text-white opacity-0 timeline-item"><i class="fas fa-plane"></i></div>
+                    <div class="w-1/2"></div>
+                </div>
+                
+                <!-- Timeline Item 4 (New) -->
+                <div class="timeline-item-container flex items-center justify-between my-8 flex-row-reverse">
+                    <div class="w-1/2 pl-6 opacity-0 timeline-item">
+                        <h3 class="font-bold">Late Night Talks</h3>
+                        <p class="text-sm">Mid 2025</p>
+                        <p class="mt-2">The conversations that last for hours and mean the world to me.</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-pink flex items-center justify-center text-white opacity-0 timeline-item"><i class="fas fa-moon"></i></div>
+                    <div class="w-1/2"></div>
+                </div>
+
+                <!-- Timeline Item 5 (New) -->
+                <div class="timeline-item-container flex items-center justify-between my-8">
+                    <div class="w-1/2 pr-6 text-right opacity-0 timeline-item">
+                        <h3 class="font-bold">Forever and Always</h3>
+                        <p class="text-sm">2026 - Infinity</p>
+                        <p class="mt-2">Our friendship continues to grow and we will keep making memories forever!</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-light-blue flex items-center justify-center text-white opacity-0 timeline-item"><i class="fas fa-infinity"></i></div>
+                    <div class="w-1/2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secret Surprise Unlock Section -->
+        <section id="secret-gate" class="section-padding bg-mint text-center">
+            <h2 class="text-3xl font-bold mb-4">A Secret Just for Us 🤫</h2>
+            <p class="text-lg mb-6">Enter our special date to unlock a secret message.</p>
+            <div class="flex flex-col items-center">
+                <input type="password" id="secret-password" class="w-64 p-3 rounded-lg text-center font-bold" placeholder="Password: 29aug">
+                <button id="unlock-btn" class="mt-4 px-8 py-3 bg-white rounded-full font-bold hover:scale-105 transition-transform animate-pulse-glow">
+                    Unlock
+                </button>
+            </div>
+        </section>
+        
+        <!-- Random Bestie Fact Section -->
+        <section id="bestie-facts" class="section-padding bg-peach text-center">
+            <h2 class="text-3xl font-bold mb-4">Random Bestie Facts 🧠</h2>
+            <div class="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-lg">
+                <p id="fact-text" class="font-handwritten text-xl min-h-[50px] flex items-center justify-center text-dark-gray"></p>
+                <button id="fact-btn" class="mt-4 px-8 py-3 bg-pink text-white rounded-full font-bold hover:scale-105 transition-transform">
+                    Get a Fact!
+                </button>
+            </div>
+        </section>
+
+        <!-- Dynamic Typing Message & Bestie Oath -->
+        <section id="message-oath" class="section-padding bg-lavender">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Typing Message -->
+                <div class="p-8 bg-white rounded-lg shadow-lg relative overflow-hidden">
+                    <h2 class="text-2xl font-bold mb-4 text-center">A Message from Me to You</h2>
+                    <p id="typed-message" class="font-handwritten text-xl md:text-2xl text-dark-gray z-10 relative animate-glow">
+                        <span class="typewriter-text border-r-2 border-black pr-1"></span>
+                    </p>
+                </div>
+                
+                <!-- Bestie Oath -->
+                <div class="p-8 bg-white rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-center">Our Bestie Oath 📝</h2>
+                    <div id="oath-checkbox-container" class="space-y-4 font-handwritten text-lg text-dark-gray">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oath1" class="form-checkbox text-pink w-6 h-6 rounded mr-3">
+                            <label for="oath1">Always share snacks (even the last one!)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oath2" class="form-checkbox text-pink w-6 h-6 rounded mr-3">
+                            <label for="oath2">Never stop laughing at our inside jokes</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oath3" class="form-checkbox text-pink w-6 h-6 rounded mr-3">
+                            <label for="oath3">Be each other's partner-in-crime for adventures</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oath4" class="form-checkbox text-pink w-6 h-6 rounded mr-3">
+                            <label for="oath4">Always be there for each other, no matter what</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oath5" class="form-checkbox text-pink w-6 h-6 rounded mr-3">
+                            <label for="oath5">To support each other's biggest dreams</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oath6" class="form-checkbox text-pink w-6 h-6 rounded mr-3">
+                            <label for="oath6">To remember our memories forever</label>
+                        </div>
+                    </div>
+                    <p id="oath-complete-message" class="mt-6 text-center text-xl font-bold text-soft-pink hidden animate-reveal">
+                        We, Manav, Kaaysha & Ne, accept this sacred oath! 💕
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fun & Games: The Spinning Wheel & Time Capsule -->
+        <section id="fun" class="section-padding bg-mint">
+            <h2 class="text-3xl text-center font-bold mb-8">Spin the Wheel of Memories 🎡</h2>
+            <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                <div class="relative w-72 h-72">
+                    <canvas id="wheelCanvas" width="500" height="500" class="w-full h-full"></canvas>
+                    <div class="absolute top-1/2 left-1/2 w-8 h-8 -mt-4 -ml-4 bg-pink rounded-full border-4 border-white shadow-lg animate-heartbeat"></div>
+                    <div class="absolute top-0 left-1/2 -mt-2 -ml-2 w-0 h-0 border-l-[1rem] border-l-transparent border-r-[1rem] border-r-transparent border-t-[2rem] border-t-dark-gray z-10"></div>
+                </div>
+                <button id="spin-wheel-btn" class="mt-6 px-8 py-4 bg-pink text-white rounded-full font-bold text-xl hover:scale-105 transition-transform">
+                    Spin!
+                </button>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button id="time-capsule-btn" class="px-8 py-3 bg-white text-dark-gray rounded-full font-bold hover:scale-105 transition-transform animate-spin-3d">
+                    Our Time Capsule ⏳
+                </button>
+            </div>
+        </section>
+        
+        <!-- Final Section with Spotify & Footer -->
+        <section id="forever" class="section-padding bg-sky-blue text-center">
+            <h2 class="text-3xl font-bold mb-6">Forever Us — Manav, Kaaysha & Ne 💕</h2>
+            <div class="mt-6 max-w-2xl mx-auto">
+                <p>Listen to our theme song:</p>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2fE7mE41W8S7tQe2069B7M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <footer class="mt-12 text-center text-sm text-gray-600">
+                <p>This website was created just for you. With love, always. 💕</p>
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- Modals -->
+    <div id="video-modal" class="modal-overlay">
+        <div class="modal-content p-0 relative max-w-full md:max-w-2xl">
+            <span class="close-button">&times;</span>
+            <video id="surprise-video" class="w-full h-auto rounded-lg" controls loop>
+                <!-- REPLACE THIS VIDEO URL WITH YOUR OWN VIDEO -->
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <canvas id="confetti-canvas" class="fixed inset-0 z-40 pointer-events-none"></canvas>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Helper Functions and Variables ---
+            const $ = (selector) => document.querySelector(selector);
+            const $$ = (selector) => document.querySelectorAll(selector);
+
+            const colors = ['#FF69B4', '#FFB6C1', '#FFC0CB', '#FEE4E2'];
+            const celebratorySynth = new Tone.Synth({
+                oscillator: { type: "sine" },
+                envelope: {
+                    attack: 0.05,
+                    decay: 0.3,
+                    sustain: 0.1,
+                    release: 0.4
+                }
+            }).toDestination();
+            const wheelSound = new Tone.PolySynth(Tone.Synth).toDestination();
+
+            const showModal = (modalId) => {
+                const modal = $(`#${modalId}`);
+                if (modal) modal.classList.add('active');
+            };
+
+            const hideModal = (modalId) => {
+                const modal = $(`#${modalId}`);
+                if (modal) modal.classList.remove('active');
+            };
+
+            const triggerConfetti = () => {
+                const confettiSettings = {
+                    target: 'confetti-canvas',
+                    max: 120,
+                    size: 1.2,
+                    props: ['circle', 'square', 'triangle', 'line'],
+                    colors: [[165,104,246],[230,61,135],[0,199,236],[248,126,204],[196,89,171],[255,149,0]],
+                };
+                const confetti = new ConfettiGenerator(confettiSettings);
+                confetti.render();
+                setTimeout(() => confetti.clear(), 3000);
+            };
+
+            const triggerHeartRain = () => {
+                const heartContainer = $('#heart-rain-container');
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    heart.style.animationDelay = `${Math.random() * 2}s`;
+                    heart.style.animationDuration = `${Math.random() * 4 + 4}s`;
+                    heartContainer.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5000);
+                }
+            };
+            
+            const triggerFireworks = () => {
+                const fireworksContainer = $('#fireworks-container');
+                const fireworkColors = ['#ff0000', '#ff8800', '#ffff00', '#00ff00', '#0000ff', '#8a2be2'];
+                const getRandomColor = () => fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+                
+                for (let i = 0; i < 15; i++) {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = `${Math.random() * 100}vw`;
+                    firework.style.top = `${Math.random() * 100}vh`;
+                    firework.style.backgroundColor = getRandomColor();
+                    fireworksContainer.appendChild(firework);
+                    setTimeout(() => firework.remove(), 2000);
+                }
+            };
+
+            // --- Modal Event Listeners ---
+            $$('.close-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const modal = e.target.closest('.modal-overlay');
+                    if (modal && modal.id === 'video-modal') {
+                        $('#surprise-video').pause();
+                        $('#surprise-video').currentTime = 0;
+                    }
+                    hideModal(modal.id);
+                });
+            });
+
+            $$('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        if (modal.id === 'video-modal') {
+                            $('#surprise-video').pause();
+                            $('#surprise-video').currentTime = 0;
+                        }
+                        hideModal(modal.id);
+                    }
+                });
+            });
+            
+            // --- Time Capsule Message & Interactive Button ---
+            const timeCapsuleBtn = $('#time-capsule-btn');
+            const capsuleRevealBtn = $('#capsule-reveal-btn');
+            const capsuleSecretMessage = $('#capsule-secret-message');
+            
+            timeCapsuleBtn.addEventListener('click', () => {
+                showModal('time-capsule-modal');
+                triggerFireworks();
+            });
+            
+            capsuleRevealBtn.addEventListener('click', () => {
+                capsuleSecretMessage.classList.remove('hidden');
+                capsuleRevealBtn.textContent = "Secret Revealed!";
+                capsuleRevealBtn.disabled = true;
+                triggerHeartRain();
+            });
+
+
+            // --- Floating Emojis and Stickers ---
+            const emojis = ['💖', '✨', '😂', '🚌', '🎒', '💕', '🥰', '💫', '🌸'];
+            const stickers = [
+                'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzJjbG5tNTRsMGpxM2RvbG50cGt6Nmt0Z3Z4a3V0NGQ2bDFjZzRpeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/uW0QdF6R3G3rN45uR4/giphy.gif',
+                'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3h2cnI5dWNnaG9vdDB6Z3VjOHVndzV6NGNmd2Rjb2F6dzF0c2p4OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WwA9221w21kCg/giphy.gif',
+                'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3R6aHRqZ3E3ZnN4aW93bGl0dGF3a2V6YWt1a3VpZnI0ZWl4eHIxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3oz8xQ58xNq93rG3hC/giphy.gif'
+            ];
+            const emojiContainer = $('#emoji-container');
+
+            const createFloatingEmoji = () => {
+                const emoji = document.createElement('div');
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.classList.add('floating-emoji', 'text-2xl', 'absolute', 'animate-float');
+                emoji.style.left = `${Math.random() * 100}vw`;
+                emoji.style.animationDelay = `${Math.random() * 2}s`;
+                emoji.style.animationDuration = `${Math.random() * 4 + 4}s`;
+                emojiContainer.appendChild(emoji);
+                setTimeout(() => emoji.remove(), 8000);
+            };
+            setInterval(createFloatingEmoji, 1000);
+
+            const addRandomSticker = () => {
+                const stickerUrl = stickers[Math.floor(Math.random() * stickers.length)];
+                const sticker = document.createElement('img');
+                sticker.src = stickerUrl;
+                sticker.className = 'sticker-gif bouncing';
+                sticker.style.width = `${Math.random() * 100 + 50}px`;
+                sticker.style.left = `${Math.random() * 80 + 10}vw`;
+                sticker.style.top = `${Math.random() * 80 + 10}vh`;
+                document.body.appendChild(sticker);
+                setTimeout(() => sticker.remove(), 5000);
+            };
+            setInterval(addRandomSticker, 15000);
+
+            // --- Music Toggle ---
+            const musicBtn = $('#music-toggle');
+            const music = $('#background-music');
+            let isPlaying = false;
+            musicBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    music.pause();
+                    musicBtn.innerHTML = '<i class="fas fa-music text-dark-gray"></i>';
+                } else {
+                    music.play().catch(error => console.error("Audio playback failed:", error));
+                    musicBtn.innerHTML = '<i class="fas fa-pause text-dark-gray"></i>';
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // --- Surprise Button & Confetti Logic ---
+            const surpriseBtn = $('#surprise-btn');
+            surpriseBtn.addEventListener('click', () => {
+                triggerConfetti();
+                triggerFireworks();
+                
+                setTimeout(() => showModal('video-modal'), 1000);
+            });
+
+            // --- Secret Password Gate ---
+            const passwordInput = $('#secret-password');
+            const unlockBtn = $('#unlock-btn');
+            const hiddenSection = $('#hidden-section');
+            const secretPassword = '29aug';
+
+            unlockBtn.addEventListener('click', () => {
+                if (passwordInput.value.toLowerCase() === secretPassword) {
+                    hiddenSection.classList.remove('hidden');
+                    hiddenSection.scrollIntoView({ behavior: 'smooth' });
+                    triggerFireworks();
+                } else {
+                    passwordInput.value = '';
+                    passwordInput.placeholder = 'Wrong password! Try again.';
+                    passwordInput.classList.add('animate-wiggle');
+                    setTimeout(() => passwordInput.classList.remove('animate-wiggle'), 1000);
+                }
+            });
+
+            
+            // --- Random Bestie Fact Section ---
+            const factBtn = $('#fact-btn');
+            const factText = $('#fact-text');
+            const facts = [
+                "We once ate a whole pizza by ourselves in 10 minutes.",
+                "Our first movie together was about time travel.",
+                "We share a secret handshake that only we know.",
+                "That time we got lost but found the best ice cream shop.",
+                "The day we built a pillow fort and watched movies all night.",
+                "We have a shared Spotify playlist with over 100 songs.",
+                "Our favorite joke is still that one about the chicken.",
+                "We both secretly love that cheesy 90s pop song."
+            ];
+            factBtn.addEventListener('click', () => {
+                const randomFact = facts[Math.floor(Math.random() * facts.length)];
+                factText.textContent = randomFact;
+                triggerHeartRain();
+            });
+
+            // --- Dynamic Typing Message ---
+            const typedMessageSpan = $('#typed-message .typewriter-text');
+            // Update the message text here to the new, longer message
+            const messageText = "Kaaysha, I can never put into words how much you mean to me. You’re my partner in laughter, my secret keeper, my constant support, and the person I cherish the most. Every memory with you is a treasure, every smile of yours is my happiness, and every day with you feels like a gift. You’re more than a bestie — you’re my forever, my everything, my favorite human.";
+            
+            const autoTypeMessage = () => {
+                let i = 0;
+                const typingInterval = setInterval(() => {
+                    if (i < messageText.length) {
+                        typedMessageSpan.textContent += messageText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingInterval);
+                        typedMessageSpan.style.borderRightColor = 'transparent';
+                    }
+                }, 50);
+            };
+
+            setTimeout(autoTypeMessage, 30000);
+
+            // --- Bestie Oath Section ---
+            const oathCheckboxes = $$('#message-oath input[type="checkbox"]');
+            const oathCompleteMessage = $('#oath-complete-message');
+
+            oathCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const allChecked = Array.from(oathCheckboxes).every(cb => cb.checked);
+                    if (allChecked) {
+                        oathCompleteMessage.classList.remove('hidden');
+                        triggerConfetti();
+                        try {
+                            celebratorySynth.triggerAttackRelease("C4", "8n");
+                        } catch (e) {
+                            console.error("Audio context not available:", e);
+                        }
+                    } else {
+                        oathCompleteMessage.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // --- Spinning Wheel of Memories & Sound ---
+            const wheelCanvas = $('#wheelCanvas');
+            const ctx = wheelCanvas.getContext('2d');
+            const spinBtn = $('#spin-wheel-btn');
+            const memories = [
+                { text: "Inside Jokes", color: '#FFADC3' },
+                { text: "Bus Rides", color: '#A3C6C4' },
+                { text: "Our First Trip", color: '#FFD3D3' },
+                { text: "Silly Fights", color: '#E2EAFB' },
+                { text: "Study Sessions", color: '#FFADC3' },
+                { text: "That One Song", color: '#A3C6C4' }
+            ];
+            const segAngle = 360 / memories.length;
+
+            const drawWheel = () => {
+                ctx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+                ctx.beginPath();
+                ctx.arc(250, 250, 200, 0, 2 * Math.PI);
+                ctx.fillStyle = '#fff';
+                ctx.fill();
+                ctx.lineWidth = 10;
+                ctx.strokeStyle = '#333';
+                ctx.stroke();
+
+                memories.forEach((mem, i) => {
+                    const startAngle = (i * segAngle - 90) * Math.PI / 180;
+                    const endAngle = ((i + 1) * segAngle - 90) * Math.PI / 180;
+
+                    ctx.beginPath();
+                    ctx.arc(250, 250, 200, startAngle, endAngle);
+                    ctx.lineTo(250, 250);
+                    ctx.fillStyle = mem.color;
+                    ctx.fill();
+                    
+                    ctx.save();
+                    ctx.translate(250, 250);
+                    ctx.rotate(startAngle + (segAngle / 2 * Math.PI / 180));
+                    ctx.textAlign = 'right';
+                    ctx.fillStyle = 'white';
+                    ctx.font = '24px Inter';
+                    ctx.fillText(mem.text, 180, 5);
+                    ctx.restore();
+                });
+            };
+
+            const spinWheel = () => {
+                const randomIndex = Math.floor(Math.random() * memories.length);
+                const degrees = 360 * 5 + (360 - randomIndex * segAngle - segAngle / 2);
+                wheelCanvas.style.transition = 'transform 4s cubic-bezier(0.1, 0.9, 0.4, 1)';
+                wheelCanvas.style.transform = `rotate(${degrees}deg)`;
+                spinBtn.disabled = true;
+
+                try {
+                    wheelSound.triggerAttackRelease(["C3", "E3", "G3", "C4"], "4n");
+                } catch (e) {
+                    console.error("Audio context not available:", e);
+                }
+
+                setTimeout(() => {
+                    spinBtn.disabled = false;
+                    const result = memories[randomIndex].text;
+                    const resultModal = document.createElement('div');
+                    resultModal.className = 'modal-overlay active animate-fade-in';
+                    resultModal.innerHTML = `<div class="modal-content"><span class="close-button">&times;</span><p class="text-xl font-handwritten text-center">The wheel landed on: ${result}! What a great memory! ✨</p></div>`;
+                    document.body.appendChild(resultModal);
+                    
+                    resultModal.querySelector('.close-button').addEventListener('click', () => resultModal.remove());
+                    resultModal.addEventListener('click', (e) => {
+                         if (e.target === resultModal) resultModal.remove();
+                    });
+
+                    triggerHeartRain();
+
+                }, 4500);
+            };
+
+            drawWheel();
+            spinBtn.addEventListener('click', spinWheel);
+
+            // --- Mouse Trail Effect ---
+            const mouseTrailContainer = $('#mouse-trail-container');
+            document.addEventListener('mousemove', (e) => {
+                const heart = document.createElement('div');
+                heart.className = 'mouse-heart';
+                heart.innerHTML = '💖';
+                heart.style.left = `${e.clientX}px`;
+                heart.style.top = `${e.clientY}px`;
+                mouseTrailContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            });
+            
+            // --- Background Color Transition ---
+            const bgColors = ['#FEE4E2', '#E2EAFB', '#D9F0F4', '#C2F9BB', '#FFD3D3'];
+            let currentColorIndex = 0;
+            const body = $('body');
+            setInterval(() => {
+                currentColorIndex = (currentColorIndex + 1) % bgColors.length;
+                body.style.backgroundColor = bgColors[currentColorIndex];
+            }, 15000);
+
+            // --- Scroll-Triggered Animations ---
+            const timelineItems = $$('.timeline-item');
+            const timelineObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-slide-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            timelineItems.forEach(item => timelineObserver.observe(item));
+
+        });
+    </script>
+</body>
+</html>
